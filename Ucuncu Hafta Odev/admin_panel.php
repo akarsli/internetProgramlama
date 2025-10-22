@@ -1,8 +1,7 @@
 <?php
-// admin_panel.php
+
 session_start();
 
-// Giriş yapılmamışsa veya rolü 'admin' değilse login sayfasına yönlendir
 if (!isset($_SESSION['giris_basarili']) || $_SESSION['rol'] !== 'admin') {
     header("Location: login.php");
     exit;

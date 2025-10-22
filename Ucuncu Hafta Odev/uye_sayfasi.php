@@ -1,8 +1,7 @@
 <?php
-// uye_sayfasi.php
+
 session_start();
 
-// Giriş yapılmamışsa veya rolü 'uye' değilse login sayfasına yönlendir
 if (!isset($_SESSION['giris_basarili']) || $_SESSION['rol'] !== 'uye') {
     header("Location: login.php");
     exit;
