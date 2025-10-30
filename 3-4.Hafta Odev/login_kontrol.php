@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 require 'db.php';
 
 if (isset($_POST['giris'])) {
@@ -15,10 +13,10 @@ if (isset($_POST['giris'])) {
 
     if ($kullanici) {
         if (password_verify($sifre, $kullanici['sifre'])) {
-
             $_SESSION['giris_basarili'] = true;
             $_SESSION['kulad'] = $kullanici['kulad'];
             $_SESSION['rol'] = $kullanici['rol'];
+            $_SESSION['id'] = $kullanici['id'];
 
             if ($kullanici['rol'] === 'admin') {
                 header("Location: admin_panel.php");
