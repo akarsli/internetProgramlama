@@ -50,8 +50,8 @@ $uyeler = $uye_sorgu->fetchAll(PDO::FETCH_ASSOC);
             <td><?php echo $kitap['yazar']; ?></td>
             <td><?php echo $kitap['stok']; ?></td>
             <td>
-                <a href="kitap_guncelle_form.php?id=<?php echo $kitap['kitap_id']; ?>">Güncelle</a> |
-                <a href="kitap_islem.php?sil_id=<?php echo $kitap['kitap_id']; ?>" onclick="return confirm('Emin misiniz?');">Sil</a>
+                <a href="kitap_guncelle_form.php?id=<?php echo $kitap['kitap_id']; ?>" style="text-decoration:none">Güncelle</a> |
+                <a href="kitap_islem.php?sil_id=<?php echo $kitap['kitap_id']; ?>" onclick="return confirm('Emin misiniz?');" style="text-decoration:none">Sil</a>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -87,11 +87,16 @@ $uyeler = $uye_sorgu->fetchAll(PDO::FETCH_ASSOC);
             <td><?php echo $uye['rol']; ?></td>
             <td>
                 <?php if ($uye['rol'] === 'uye'): ?>
-                    <a href="uye_islem.php?id=<?php echo $uye['id']; ?>&durum=pasif">Pasif Yap</a>
+                    <a href="uye_islem.php?id=<?php echo $uye['id']; ?>&durum=pasif" style="text-decoration:none">Pasif Yap</a> |
                 <?php elseif ($uye['rol'] === 'pasif'): ?>
-                    <a href="uye_islem.php?id=<?php echo $uye['id']; ?>&durum=uye">Aktif Yap</a>
+                    <a href="uye_islem.php?id=<?php echo $uye['id']; ?>&durum=uye" style="text-decoration:none">Aktif Yap</a> |
                 <?php else: ?>
-                    <span style="color:gray;">Admin İşlenemez</span>
+                    <span style="color:gray;">Admin İşlenemez</span> |
+                <?php endif; ?>
+                <?php if ($uye['id'] !== $_SESSION['id']): ?>
+                    <a href="uye_islem.php?sil_id=<?php echo $uye['id']; ?>"onclick="return confirm('UYARI: <?php echo $uye['kulad']; ?> kullanıcısını silmek istediğinizden emin misiniz?');" style="text-decoration:none">Sil</a>
+                <?php else: ?>
+                    <span style="color:gray;">Kendini Silemezsin!</span>
                 <?php endif; ?>
             </td>
         </tr>
