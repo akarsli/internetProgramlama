@@ -10,7 +10,6 @@ namespace OgrenciYonetimProjesi.Data
         {
         }
 
-        // Ogrenci modelini veritabanındaki Ogrenciler tablosu olarak tanımlar.
         public DbSet<Ogrenci> Ogrenciler { get; set; } = default!;
     }
 }
