@@ -1,0 +1,30 @@
+{
+    "sourceFile": "Program.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1762443029764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1762443532544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,20 @@\n-// Program.cs\r\n using Microsoft.EntityFrameworkCore;\r\n-using OgrenciYonetimProjesi.Data; // Yeni oluşturduğumuz Data klasörünü kullan\r\n+using OgrenciYonetimProjesi.Data; // DBContext'e erişim için\r\n \r\n var builder = WebApplication.CreateBuilder(args);\r\n \r\n // Add services to the container.\r\n builder.Services.AddControllersWithViews();\r\n \r\n-// DBContext servisini ekle\r\n+// ----------------------------------------------------\r\n+// DBContext Servisini Ekleme (SQLite için)\r\n+// ----------------------------------------------------\r\n var connectionString = builder.Configuration.GetConnectionString(\"DefaultConnection\");\r\n builder.Services.AddDbContext<UygulamaDbContext>(options =>\r\n-    options.UseSqlite(connectionString)); // Eğer SQLite kullanıyorsanız\r\n+    options.UseSqlite(connectionString)); \r\n+// ----------------------------------------------------\r\n \r\n-// Eğer SQL Server kullanacaksanız bu satırı kullanın:\r\n-// options.UseSqlServer(connectionString));\r\n var app = builder.Build();\r\n \r\n // Configure the HTTP request pipeline.\r\n if (!app.Environment.IsDevelopment())\r\n@@ -33,6 +33,9 @@\n \r\n app.MapControllerRoute(\r\n     name: \"default\",\r\n     pattern: \"{controller=Home}/{action=Index}/{id?}\");\r\n+// Veya direkt olarak Ogrenci Listeleme sayfasından başlamak isterseniz:\r\n+// pattern: \"{controller=Ogrenci}/{action=Index}/{id?}\");\r\n \r\n-app.Run();\r\n+\r\n+app.Run();\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762443722078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,12 +30,11 @@\n app.UseRouting();\r\n \r\n app.UseAuthorization();\r\n \r\n+// Program.cs dosyasında, app.MapControllerRoute kısmını bulun\r\n app.MapControllerRoute(\r\n     name: \"default\",\r\n-    pattern: \"{controller=Home}/{action=Index}/{id?}\");\r\n-// Veya direkt olarak Ogrenci Listeleme sayfasından başlamak isterseniz:\r\n-// pattern: \"{controller=Ogrenci}/{action=Index}/{id?}\");\r\n+    // Home yerine Ogrenci Controller'ı varsayılan yapıldı\r\n+    pattern: \"{controller=Ogrenci}/{action=Index}/{id?}\");\r\n \r\n-\r\n app.Run();\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762443735863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,11 @@\n using Microsoft.EntityFrameworkCore;\r\n-using OgrenciYonetimProjesi.Data; // DBContext'e erişim için\r\n+using OgrenciYonetimProjesi.Data;\r\n \r\n var builder = WebApplication.CreateBuilder(args);\r\n \r\n-// Add services to the container.\r\n builder.Services.AddControllersWithViews();\r\n \r\n-// ----------------------------------------------------\r\n-// DBContext Servisini Ekleme (SQLite için)\r\n-// ----------------------------------------------------\r\n var connectionString = builder.Configuration.GetConnectionString(\"DefaultConnection\");\r\n builder.Services.AddDbContext<UygulamaDbContext>(options =>\r\n     options.UseSqlite(connectionString)); \r\n // ----------------------------------------------------\r\n@@ -30,11 +26,9 @@\n app.UseRouting();\r\n \r\n app.UseAuthorization();\r\n \r\n-// Program.cs dosyasında, app.MapControllerRoute kısmını bulun\r\n app.MapControllerRoute(\r\n     name: \"default\",\r\n-    // Home yerine Ogrenci Controller'ı varsayılan yapıldı\r\n     pattern: \"{controller=Ogrenci}/{action=Index}/{id?}\");\r\n \r\n app.Run();\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1762443029764,
+            "name": "Commit-0",
+            "content": "// Program.cs\r\nusing Microsoft.EntityFrameworkCore;\r\nusing OgrenciYonetimProjesi.Data; // Yeni oluşturduğumuz Data klasörünü kullan\r\n\r\nvar builder = WebApplication.CreateBuilder(args);\r\n\r\n// Add services to the container.\r\nbuilder.Services.AddControllersWithViews();\r\n\r\n// DBContext servisini ekle\r\nvar connectionString = builder.Configuration.GetConnectionString(\"DefaultConnection\");\r\nbuilder.Services.AddDbContext<UygulamaDbContext>(options =>\r\n    options.UseSqlite(connectionString)); // Eğer SQLite kullanıyorsanız\r\n\r\n// Eğer SQL Server kullanacaksanız bu satırı kullanın:\r\n// options.UseSqlServer(connectionString));\r\nvar app = builder.Build();\r\n\r\n// Configure the HTTP request pipeline.\r\nif (!app.Environment.IsDevelopment())\r\n{\r\n    app.UseExceptionHandler(\"/Home/Error\");\r\n    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.\r\n    app.UseHsts();\r\n}\r\n\r\napp.UseHttpsRedirection();\r\napp.UseStaticFiles();\r\n\r\napp.UseRouting();\r\n\r\napp.UseAuthorization();\r\n\r\napp.MapControllerRoute(\r\n    name: \"default\",\r\n    pattern: \"{controller=Home}/{action=Index}/{id?}\");\r\n\r\napp.Run();\r\n"
+        }
+    ]
+}

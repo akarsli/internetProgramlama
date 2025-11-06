@@ -1,0 +1,26 @@
+{
+    "sourceFile": "Models/Ogrenci.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1762443504931,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1762444215733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,21 +1,23 @@\n using System.ComponentModel.DataAnnotations;\n \n namespace OgrenciYonetimProjesi.Models\n {\n-    public class Ogrenci\n-    {\n-        public int Id { get; set; } // Primary Key (Birincil Anahtar)\n+    // Models/Ogrenci.cs\n \n-        [Required(ErrorMessage = \"Ad alanı zorunludur.\")]\n-        [StringLength(50)]\n-        public string Ad { get; set; }\n+public class Ogrenci\n+{\n+    public int Id { get; set; }\n \n-        [Required(ErrorMessage = \"Soyad alanı zorunludur.\")]\n-        [StringLength(50)]\n-        public string Soyad { get; set; }\n+    [Required(ErrorMessage = \"Ad alanı zorunludur.\")]\n+    [StringLength(50)]\n+    public string? Ad { get; set; } // <--- Buraya ? eklendi\n \n-        [Display(Name = \"Öğrenci Numarası\")]\n-        [Required(ErrorMessage = \"Öğrenci Numarası zorunludur.\")]\n-        public int OgrenciNo { get; set; }\n-    }\n+    [Required(ErrorMessage = \"Soyad alanı zorunludur.\")]\n+    [StringLength(50)]\n+    public string? Soyad { get; set; } // <--- Buraya ? eklendi\n+\n+    [Display(Name = \"Öğrenci Numarası\")]\n+    [Required(ErrorMessage = \"Öğrenci Numarası zorunludur.\")]\n+    public int OgrenciNo { get; set; }\n+}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762444520700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,21 @@\n using System.ComponentModel.DataAnnotations;\n \n namespace OgrenciYonetimProjesi.Models\n {\n-    // Models/Ogrenci.cs\n+    public class Ogrenci\n+    {\n+        public int Id { get; set; } \n \n-public class Ogrenci\n-{\n-    public int Id { get; set; }\n+        [Required(ErrorMessage = \"Ad alanı zorunludur.\")]\n+        [StringLength(50)]\n+        public string? Ad { get; set; } // <-- ? eklendi\n \n-    [Required(ErrorMessage = \"Ad alanı zorunludur.\")]\n-    [StringLength(50)]\n-    public string? Ad { get; set; } // <--- Buraya ? eklendi\n+        [Required(ErrorMessage = \"Soyad alanı zorunludur.\")]\n+        [StringLength(50)]\n+        public string? Soyad { get; set; } // <-- ? eklendi\n \n-    [Required(ErrorMessage = \"Soyad alanı zorunludur.\")]\n-    [StringLength(50)]\n-    public string? Soyad { get; set; } // <--- Buraya ? eklendi\n-\n-    [Display(Name = \"Öğrenci Numarası\")]\n-    [Required(ErrorMessage = \"Öğrenci Numarası zorunludur.\")]\n-    public int OgrenciNo { get; set; }\n-}\n+        [Display(Name = \"Öğrenci Numarası\")]\n+        [Required(ErrorMessage = \"Öğrenci Numarası zorunludur.\")]\n+        public int OgrenciNo { get; set; }\n+    }\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1762443504931,
+            "name": "Commit-0",
+            "content": "using System.ComponentModel.DataAnnotations;\n\nnamespace OgrenciYonetimProjesi.Models\n{\n    public class Ogrenci\n    {\n        public int Id { get; set; } // Primary Key (Birincil Anahtar)\n\n        [Required(ErrorMessage = \"Ad alanı zorunludur.\")]\n        [StringLength(50)]\n        public string Ad { get; set; }\n\n        [Required(ErrorMessage = \"Soyad alanı zorunludur.\")]\n        [StringLength(50)]\n        public string Soyad { get; set; }\n\n        [Display(Name = \"Öğrenci Numarası\")]\n        [Required(ErrorMessage = \"Öğrenci Numarası zorunludur.\")]\n        public int OgrenciNo { get; set; }\n    }\n}"
+        }
+    ]
+}

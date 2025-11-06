@@ -1,0 +1,55 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = OgrenciYonetimProjesi
+build_property.RootNamespace = OgrenciYonetimProjesi
+build_property.ProjectDir = /Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Ogrenci/Duzenle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RHV6ZW5sZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Ogrenci/Ekle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RWtsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Ogrenci/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Ogrenci/Sil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = U2lsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = RXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = X0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-3yrb6noe4g

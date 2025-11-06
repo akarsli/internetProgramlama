@@ -1,0 +1,30 @@
+{
+    "sourceFile": "Data/UygulamaDbContext.cs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1762443176630,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1762443242431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+// Data/UygulamaDbContext.cs\n+\n+using Microsoft.EntityFrameworkCore;\n+// Models klasöründeki Ogrenci sınıfına erişmek için\n+using OgrenciYonetimProjesi.Models; \n+\n+namespace OgrenciYonetimProjesi.Data\n+{\n+    public class UygulamaDbContext : DbContext\n+    {\n+        public UygulamaDbContext(DbContextOptions<UygulamaDbContext> options)\n+            : base(options)\n+        {\n+        }\n+\n+        // Ogrenci modelini veritabanındaki Ogrenciler tablosu olarak tanımlarız.\n+        public DbSet<Ogrenci> Ogrenciler { get; set; } = default!;\n+    }\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762443372825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         {\n         }\n \n         // Ogrenci modelini veritabanındaki Ogrenciler tablosu olarak tanımlarız.\n-        public DbSet<Ogrenci> Ogrenciler { get; set; } = default!;\n+        // public DbSet<Ogrenci> Ogrenciler { get; set; } = default!;\n     }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1762443514733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,6 @@\n-// Data/UygulamaDbContext.cs\n-\n using Microsoft.EntityFrameworkCore;\n-// Models klasöründeki Ogrenci sınıfına erişmek için\n-using OgrenciYonetimProjesi.Models; \n+using OgrenciYonetimProjesi.Models;\n \n namespace OgrenciYonetimProjesi.Data\n {\n     public class UygulamaDbContext : DbContext\n@@ -12,8 +9,8 @@\n             : base(options)\n         {\n         }\n \n-        // Ogrenci modelini veritabanındaki Ogrenciler tablosu olarak tanımlarız.\n-        // public DbSet<Ogrenci> Ogrenciler { get; set; } = default!;\n+        // Ogrenci modelini veritabanındaki Ogrenciler tablosu olarak tanımlar.\n+        public DbSet<Ogrenci> Ogrenciler { get; set; } = default!;\n     }\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1762443176630,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}

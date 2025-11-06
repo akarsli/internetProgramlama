@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Views/Ogrenci/Sil.cshtml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1762443886773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1762443886773,
+            "name": "Commit-0",
+            "content": "@* Views/Ogrenci/Sil.cshtml *@\n@model OgrenciYonetimProjesi.Models.Ogrenci\n\n@{\n    ViewData[\"Title\"] = \"Öğrenciyi Sil\";\n}\n\n<h1>Silme Onayı</h1>\n\n<h3>Bu öğrenci kaydını silmek istediğinizden emin misiniz?</h3>\n<div>\n    <hr />\n    <dl class=\"row\">\n        <dt class = \"col-sm-2\">@Html.DisplayNameFor(model => model.Ad)</dt>\n        <dd class = \"col-sm-10\">@Html.DisplayFor(model => model.Ad)</dd>\n        \n        <dt class = \"col-sm-2\">@Html.DisplayNameFor(model => model.Soyad)</dt>\n        <dd class = \"col-sm-10\">@Html.DisplayFor(model => model.Soyad)</dd>\n        \n        <dt class = \"col-sm-2\">@Html.DisplayNameFor(model => model.OgrenciNo)</dt>\n        <dd class = \"col-sm-10\">@Html.DisplayFor(model => model.OgrenciNo)</dd>\n    </dl>\n    \n    <form asp-action=\"Sil\">\n        @* Silinecek kaydın ID'sini form ile POST metodu ile göndermek için *@\n        <input type=\"hidden\" asp-for=\"Id\" />\n        <input type=\"submit\" value=\"Sil\" class=\"btn btn-danger\" /> |\n        <a asp-action=\"Index\">Listeye Geri Dön</a>\n    </form>\n</div>"
+        }
+    ]
+}

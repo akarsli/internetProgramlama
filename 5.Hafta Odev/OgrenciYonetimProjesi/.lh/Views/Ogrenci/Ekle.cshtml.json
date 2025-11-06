@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Views/Ogrenci/Ekle.cshtml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1762443606499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1762443606499,
+            "name": "Commit-0",
+            "content": "@model OgrenciYonetimProjesi.Models.Ogrenci\n\n@{\n    ViewData[\"Title\"] = \"Yeni Öğrenci Ekle\";\n}\n\n<h1>Yeni Öğrenci Ekle</h1>\n\n<hr />\n<div class=\"row\">\n    <div class=\"col-md-4\">\n        <form asp-action=\"Ekle\">\n            <div asp-validation-summary=\"ModelOnly\" class=\"text-danger\"></div>\n            \n            <div class=\"form-group mb-3\">\n                <label asp-for=\"Ad\" class=\"control-label\"></label>\n                <input asp-for=\"Ad\" class=\"form-control\" />\n                <span asp-validation-for=\"Ad\" class=\"text-danger\"></span>\n            </div>\n            \n            <div class=\"form-group mb-3\">\n                <label asp-for=\"Soyad\" class=\"control-label\"></label>\n                <input asp-for=\"Soyad\" class=\"form-control\" />\n                <span asp-validation-for=\"Soyad\" class=\"text-danger\"></span>\n            </div>\n            \n            <div class=\"form-group mb-3\">\n                <label asp-for=\"OgrenciNo\" class=\"control-label\"></label>\n                <input asp-for=\"OgrenciNo\" class=\"form-control\" />\n                <span asp-validation-for=\"OgrenciNo\" class=\"text-danger\"></span>\n            </div>\n            \n            <div class=\"form-group mt-3\">\n                <input type=\"submit\" value=\"Kaydet\" class=\"btn btn-primary\" />\n            </div>\n        </form>\n    </div>\n</div>\n\n<div class=\"mt-3\">\n    <a asp-action=\"Index\">Listeye Geri Dön</a>\n</div>\n@section Scripts {\n    @{await Html.RenderPartialAsync(\"_ValidationScriptsPartial\");}\n}"
+        }
+    ]
+}

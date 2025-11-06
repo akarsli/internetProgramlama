@@ -1,0 +1,30 @@
+@* Views/Ogrenci/Sil.cshtml *@
+@model OgrenciYonetimProjesi.Models.Ogrenci
+
+@{
+    ViewData["Title"] = "Öğrenciyi Sil";
+}
+
+<h1>Silme Onayı</h1>
+
+<h3>Bu öğrenci kaydını silmek istediğinizden emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Ad)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.Ad)</dd>
+        
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.Soyad)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.Soyad)</dd>
+        
+        <dt class = "col-sm-2">@Html.DisplayNameFor(model => model.OgrenciNo)</dt>
+        <dd class = "col-sm-10">@Html.DisplayFor(model => model.OgrenciNo)</dd>
+    </dl>
+    
+    <form asp-action="Sil">
+        @* Silinecek kaydın ID'sini form ile POST metodu ile göndermek için *@
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index">Listeye Geri Dön</a>
+    </form>
+</div>

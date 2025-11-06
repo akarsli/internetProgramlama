@@ -1,0 +1,18 @@
+{
+    "sourceFile": "Views/Ogrenci/Index.cshtml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1762443584540,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1762443584540,
+            "name": "Commit-0",
+            "content": "@model IEnumerable<OgrenciYonetimProjesi.Models.Ogrenci>\n\n@{\n    ViewData[\"Title\"] = \"Öğrenci Listesi\";\n}\n\n<h1>Öğrenci Listesi</h1>\n\n<p>\n    <a asp-action=\"Ekle\" class=\"btn btn-success\">Yeni Öğrenci Ekle</a>\n</p>\n\n<table class=\"table\">\n    <thead>\n        <tr>\n            <th>@Html.DisplayNameFor(model => model.Ad)</th>\n            <th>@Html.DisplayNameFor(model => model.Soyad)</th>\n            <th>@Html.DisplayNameFor(model => model.OgrenciNo)</th>\n            <th>İşlemler</th>\n        </tr>\n    </thead>\n    <tbody>\n@foreach (var item in Model) {\n        <tr>\n            <td>@Html.DisplayFor(modelItem => item.Ad)</td>\n            <td>@Html.DisplayFor(modelItem => item.Soyad)</td>\n            <td>@Html.DisplayFor(modelItem => item.OgrenciNo)</td>\n            <td>\n                <a asp-action=\"Duzenle\" asp-route-id=\"@item.Id\" class=\"btn btn-sm btn-primary\">Düzenle</a> |\n                <a asp-action=\"Sil\" asp-route-id=\"@item.Id\" class=\"btn btn-sm btn-danger\">Sil</a>\n            </td>\n        </tr>\n}\n    </tbody>\n</table>"
+        }
+    ]
+}
