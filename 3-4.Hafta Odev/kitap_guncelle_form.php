@@ -23,10 +23,11 @@ if (!$kitap) {
 <head>
     <meta charset="UTF-8">
     <title>Kitap Güncelle</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <h2>Kitap Güncelle (ID: <?php echo $kitap['kitap_id']; ?>)</h2>
-    <form action="kitap_guncelle_islem.php" method="POST">
+    <form action="kitap_guncelleme_islem.php" method="POST">
         <input type="hidden" name="kitap_id" value="<?php echo $kitap['kitap_id']; ?>">
         
         <label for="ad">Kitap Adı:</label>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Kullanıcı Girişi</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <h2>Giriş Yap</h2>

@@ -24,10 +24,11 @@ $uyeler = $uye_sorgu->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Admin Paneli</title>
     <style>table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; }</style>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <h1>Hoşgeldin, <?php echo htmlspecialchars($username); ?>! (ADMIN)</h1>
-    <p><a href="cikis.php">Çıkış Yap</a></p>
+    <a href="cikis.php"><button type="submit">Çıkış Yap</button></a>
 
     <h2>Kitap Ekle</h2>
     <form action="kitap_islem.php" method="POST">

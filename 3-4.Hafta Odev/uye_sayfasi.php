@@ -14,6 +14,7 @@ $username = $_SESSION['kulad'];
 <head>
     <meta charset="UTF-8">
     <title>Üye Sayfası</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <h1>Hoşgeldin, <?php echo htmlspecialchars($username); ?>! (ÜYE)</h1>
