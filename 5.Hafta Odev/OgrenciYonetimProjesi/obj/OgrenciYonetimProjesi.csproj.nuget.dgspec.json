@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj": {}
+    "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj": {}
   },
   "projects": {
-    "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj": {
+    "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj",
+        "projectUniqueName": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj",
         "projectName": "OgrenciYonetimProjesi",
-        "projectPath": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj",
+        "projectPath": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj",
         "packagesPath": "/Users/abdulkadirkarsli/.nuget/packages/",
-        "outputPath": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/obj/",
+        "outputPath": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/abdulkadirkarsli/.nuget/NuGet/NuGet.Config"

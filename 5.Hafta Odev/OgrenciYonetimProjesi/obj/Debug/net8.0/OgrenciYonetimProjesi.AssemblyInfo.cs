@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OgrenciYonetimProjesi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54be84ff56d2cccb5b76fdfcafbaeffa25fede51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+493cf49c526af5e3e290bba8de6ae8d428ee18de")]
 [assembly: System.Reflection.AssemblyProductAttribute("OgrenciYonetimProjesi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OgrenciYonetimProjesi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
