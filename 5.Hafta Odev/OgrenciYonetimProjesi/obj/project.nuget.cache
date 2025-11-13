@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AqWapbbUZXQ=",
+  "dgSpecHash": "muxrTT8NBS0=",
   "success": true,
-  "projectFilePath": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj",
+  "projectFilePath": "/Users/abdulkadirkarsli/Desktop/Üniversite/İnternet Programlama/internetProgramlama/5.Hafta Odev/OgrenciYonetimProjesi/OgrenciYonetimProjesi.csproj",
   "expectedPackageFiles": [
     "/Users/abdulkadirkarsli/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/abdulkadirkarsli/.nuget/packages/microsoft.data.sqlite.core/7.0.5/microsoft.data.sqlite.core.7.0.5.nupkg.sha512",
@@ -34,12 +34,5 @@
     "/Users/abdulkadirkarsli/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
     "/Users/abdulkadirkarsli/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Paket güvenlik açığı verileri alınırken hata oluştu: https://api.nuget.org/v3/index.json kaynağı için hizmet dizini yüklenemiyor."
-    }
-  ]
+  "logs": []
 }
