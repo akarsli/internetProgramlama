@@ -1,0 +1,58 @@
+
+.dashboard-menu {
+    margin-top: 30px;
+    padding: 0;
+}
+
+.dashboard-menu ul {
+    display: flex; /* Menü öğelerini yan yana dizer */
+    flex-wrap: wrap; /* Gerekirse alt satıra geçmesini sağlar */
+    gap: 20px; /* Öğeler arası boşluk */
+}
+
+.dashboard-menu li {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    flex: 1 1 280px; /* Esnek genişlik: minimum 280px */
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-menu li:hover {
+    background-color: #e3f4f0; /* Hafif bir vurgu rengi */
+    border-color: var(--primary-dark);
+    transform: translateY(-2px); /* Hafifçe yukarı kaydırır */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-menu a {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--secondary-color); /* Menü link rengini koyu yapar */
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-menu a:hover {
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+/* Çıkış butonu için ayrı stil */
+.logout-link {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: right;
+}
+
+.logout-link a {
+    color: var(--error-color);
+    font-weight: bold;
+}
