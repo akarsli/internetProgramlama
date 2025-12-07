@@ -20,10 +20,11 @@ $hasta = $_SESSION['kullanici'];
 
     <h2>İşlemler</h2>
     <ul>
-        <li><a href="randevu_al.php">🗓️ Yeni Randevu Al (Create)</a></li>
+        <li><a href="/../../homepage.php">🏠 Ana Sayfaya Git</a></li>
+        <li><a href="randevu_al.php">🗓️ Yeni Randevu Al</a></li>
         <li><a href="randevu_listele.php">📋 Mevcut Randevuları Görüntüle</a></li> 
         <li><a href="kayit_gecmisi.php">🩺 Tıbbi Kayıtlarımı Görüntüle</a></li>
-        <li><a href="../../logout.php">Çıkış Yap</a></li>
+        <li><a href="../../logout.php">➡️ Çıkış Yap</a></li>
     </ul>
 </body>
 </html>

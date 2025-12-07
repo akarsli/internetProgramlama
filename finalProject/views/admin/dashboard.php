@@ -19,11 +19,11 @@ $admin = $_SESSION['kullanici'];
         
         <h2>Yönetim Menüsü</h2>
         <ul>
+            <li><a href="/../../homepage.php">🏠 Ana Sayfaya Git</a></li>
             <li><a href="admin_ekle.php">👮‍♀️ Admin Ekle</a></li>
             <li><a href="doktor_ekle.php">🩺 Doktor Ekle</a></li>
             <li><a href="kullanici_listele.php">👥 Tüm Kullanıcıları Listele</a></li>
-            <li><a href="#">Randevu ve Tıbbi Kayıtları Yönetme</a></li>
-            <li><a href="../../logout.php">Çıkış Yap</a></li>
+            <li><a href="../../logout.php">➡️ Çıkış Yap</a></li>
         </ul>
     </div>
     </body>

@@ -5,6 +5,8 @@ yetki_kontrol('Doktor');
 
 require_once __DIR__ . '/../../config/db_baglanti.php';
 require_once __DIR__ . '/../../models/Randevu.php';
+require_once __DIR__ . '/../../models/TıbbiKayit.php';
+$kayit_model = new TıbbiKayit($pdo);
 
 $randevu_model = new Randevu($pdo);
 $doktor_kullanici_id = $_SESSION['kullanici']['kullanici_id'];
@@ -60,9 +62,19 @@ $randevular = $randevu_model->doktorRandevulariniGetir($doktor_kullanici_id);
                             <?php elseif ($randevu['durum'] == 'Onaylandı'): ?>
                                 <a href="randevu_guncelle.php?id=<?php echo $randevu['randevu_id']; ?>&durum=Tamamlandı" style="color: green;">Tamamlandı</a>
                             
-                            <?php elseif ($randevu['durum'] == 'Tamamlandı'): ?>
-                                <a href="kayit_ekle.php?randevu_id=<?php echo $randevu['randevu_id']; ?>" style="color: blue;">Tıbbi Kayıt Ekle</a>
-                                
+                            <<?php elseif ($randevu['durum'] == 'Tamamlandı'): 
+                                // Kayıt var mı kontrolü yap
+                                $mevcut_kayit = $kayit_model->randevuKaydiVarMi($randevu['randevu_id']);
+                            ?>
+                                <?php if ($mevcut_kayit): ?>
+                                    <a href="kayit_duzenle.php?randevu_id=<?php echo $randevu['randevu_id']; ?>" style="color: orange; font-weight: bold;">
+                                        Tıbbi Kaydı Düzenle
+                                    </a>
+                                <?php else: ?>
+                                    <a href="kayit_ekle.php?randevu_id=<?php echo $randevu['randevu_id']; ?>" style="color: blue;">
+                                        Tıbbi Kayıt Ekle
+                                    </a>
+                                <?php endif; ?>
                             <?php else: ?>
                                 <?php echo htmlspecialchars($randevu['durum']); ?>
                             <?php endif; ?>

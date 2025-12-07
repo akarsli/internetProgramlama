@@ -5,6 +5,7 @@ yetki_kontrol('Admin');
 
 require_once __DIR__ . '/../../config/db_baglanti.php';
 require_once __DIR__ . '/../../models/Kullanici.php';
+require_once __DIR__ . '/../../config/uzmanliklar.php';
 
 $kullanici_model = new Kullanici($pdo);
 $mesaj = '';
@@ -53,10 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $e_posta = trim($_POST['e_posta']);
         $telefon = trim($_POST['telefon']);
         $rol_id = (int)$_POST['rol_id'];
+        $uzmanlik_alani = trim($_POST['uzmanlik_alani'] ?? null); // Yeni alan
 
         if (empty($ad) || empty($soyad) || empty($e_posta) || empty($rol_id)) {
             $hata = "Ad, Soyad, E-posta ve Rol alanları boş bırakılamaz.";
-        } elseif ($kullanici_model->adminKullaniciGuncelle($kullanici_id, $ad, $soyad, $e_posta, $telefon, $rol_id)) {
+        } elseif ($kullanici_model->adminKullaniciGuncelle($kullanici_id, $ad, $soyad, $e_posta, $telefon, $rol_id, $uzmanlik_alani)) { // Yeni parametre gönderildi
             $mesaj = htmlspecialchars($kullanici_bilgi['ad'] . ' ' . $kullanici_bilgi['soyad']) . " kullanıcısının bilgileri ve rolü başarıyla güncellendi!";
             
             // Güncel verileri tekrar çek
@@ -119,6 +121,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </option>
                 <?php endforeach; ?>
             </select>
+
+            <label for="uzmanlik_alani">Uzmanlık Alanı:</label>
+            <select id="uzmanlik_alani" name="uzmanlik_alani">
+                <option value="">Lütfen Uzmanlık Alanını Seçiniz</option>
+                <?php foreach ($UZMANLIK_ALANLARI as $uzmanlik): ?>
+                    <?php 
+                        // Mevcut kayıtlı değeri veya POST ile gelen değeri seçili getirir
+                        $current_value = $_POST['uzmanlik_alani'] ?? $kullanici_bilgi['uzmanlik_alani'];
+                        $selected = ($current_value === $uzmanlik) ? 'selected' : '';
+                    ?>
+                    <option value="<?php echo htmlspecialchars($uzmanlik); ?>" <?php echo $selected; ?>>
+                        <?php echo htmlspecialchars($uzmanlik); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            
             <br><br>
 
             <button type="submit" name="guncelle">Bilgileri ve Rolü Güncelle</button>

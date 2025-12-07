@@ -43,24 +43,28 @@ class Kullanici {
      * @param int $rol_id
      * @return bool İşlem başarılıysa true, değilse false
      */
-    public function kayitOl($ad, $soyad, $e_posta, $sifre, $rol_id) {
-        $hashed_sifre = password_hash($sifre, PASSWORD_DEFAULT);
+    public function kayitOl($ad, $soyad, $e_posta, $sifre, $rol_id, $uzmanlik_alani = null) {
+    
+    // Uzmanlık alanı parametresi eklendi, varsayılan değeri null olarak ayarlandı
+    
+    $hashed_sifre = password_hash($sifre, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO Kullanicilar (ad, soyad, e_posta, sifre_hash, rol_id, aktif_mi) 
-                VALUES (?, ?, ?, ?, ?, 1)";
-        
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            if ($stmt->execute([$ad, $soyad, $e_posta, $hashed_sifre, $rol_id])) {
-                // Başarılı olursa, eklenen kaydın ID'sini döndür
-                return $this->pdo->lastInsertId();
-            }
-            return false;
-        } catch (\PDOException $e) {
-            // echo "Hata: " . $e->getMessage(); 
-            return false;
+    // SQL sorgusu bu parametreyi kullanacak şekilde zaten güncellenmişti:
+    $sql = "INSERT INTO Kullanicilar (ad, soyad, e_posta, sifre_hash, rol_id, uzmanlik_alani, aktif_mi) 
+            VALUES (?, ?, ?, ?, ?, ?, 1)";
+    
+    try {
+        $stmt = $this->pdo->prepare($sql);
+        // Parametreler listesine $uzmanlik_alani eklendi
+        if ($stmt->execute([$ad, $soyad, $e_posta, $hashed_sifre, $rol_id, $uzmanlik_alani])) {
+            return $this->pdo->lastInsertId();
         }
+        return false;
+    } catch (\PDOException $e) {
+        // ...
+        return false;
     }
+}
 
     /**
      * Hastalar tablosuna yeni kaydı ekler.
@@ -83,19 +87,18 @@ class Kullanici {
     
     // Temel CRUD: Tek bir kullanıcıyı ID ile Getir (Read)
     public function tumKullanicilariGetir() {
-        $sql = "SELECT k.kullanici_id, k.ad, k.soyad, k.e_posta, k.telefon, k.aktif_mi, r.rol_adi 
+        $sql = "SELECT k.kullanici_id, k.ad, k.soyad, k.e_posta, k.telefon, k.uzmanlik_alani, k.aktif_mi, r.rol_adi
                 FROM Kullanicilar k
                 JOIN Roller r ON k.rol_id = r.rol_id
-                ORDER BY r.rol_adi, k.soyad";
+                ORDER BY k.rol_id, k.soyad";
         
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
     public function doktorlariGetir() {
-        // Roller tablosunda Doktor rolünün ID'sinin 2 olduğunu varsayıyoruz.
-        // Güvenlik için rol_adi ile sorgulama daha iyidir.
-        $sql = "SELECT k.kullanici_id, k.ad, k.soyad 
+        $sql = "SELECT k.kullanici_id, k.ad, k.soyad, k.uzmanlik_alani, r.rol_adi 
                 FROM Kullanicilar k
                 JOIN Roller r ON k.rol_id = r.rol_id
                 WHERE r.rol_adi = 'Doktor' AND k.aktif_mi = 1
@@ -105,14 +108,15 @@ class Kullanici {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
+    
     /**
      * ID ile tek bir kullanıcının bilgilerini getirir.
      * @param int $kullanici_id
      * @return array|false Kullanıcı verilerini veya false döndürür.
      */
     public function idIleKullaniciGetir($kullanici_id) {
-        $sql = "SELECT k.ad, k.soyad, k.e_posta, k.telefon, r.rol_adi 
+        // Uzmanlık alanı çekiliyor
+        $sql = "SELECT k.ad, k.soyad, k.e_posta, k.telefon, k.rol_id, k.uzmanlik_alani, r.rol_adi 
                 FROM Kullanicilar k 
                 JOIN Roller r ON k.rol_id = r.rol_id
                 WHERE k.kullanici_id = ?";
@@ -174,14 +178,16 @@ class Kullanici {
      * @param int $rol_id Yeni rolün ID'si
      * @return bool İşlem başarılıysa true
      */
-    public function adminKullaniciGuncelle($kullanici_id, $ad, $soyad, $e_posta, $telefon, $rol_id) {
+    public function adminKullaniciGuncelle($kullanici_id, $ad, $soyad, $e_posta, $telefon, $rol_id, $uzmanlik_alani) {
+        // Uzmanlık alanı eklendi
         $sql = "UPDATE Kullanicilar 
-                SET ad = ?, soyad = ?, e_posta = ?, telefon = ?, rol_id = ? 
+                SET ad = ?, soyad = ?, e_posta = ?, telefon = ?, rol_id = ?, uzmanlik_alani = ? 
                 WHERE kullanici_id = ?";
         
         try {
             $stmt = $this->pdo->prepare($sql);
-            return $stmt->execute([$ad, $soyad, $e_posta, $telefon, $rol_id, $kullanici_id]);
+            // Uzmanlık alanı parametresi eklendi
+            return $stmt->execute([$ad, $soyad, $e_posta, $telefon, $rol_id, $uzmanlik_alani, $kullanici_id]);
         } catch (\PDOException $e) {
             // echo "Admin Güncelleme hatası: " . $e->getMessage();
             return false;
@@ -234,6 +240,24 @@ class Kullanici {
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    
+
+    /**
+     * Sistemdeki tüm benzersiz uzmanlık alanlarını (aktif hizmetleri) çeker.
+     * @return array Benzersiz uzmanlık alanlarının listesi
+     */
+    public function aktifHizmetleriGetir() {
+        // DISTINCT kullanarak uzmanlık alanlarını tekrarsız ve boş olmayanları çeker
+        $sql = "SELECT DISTINCT uzmanlik_alani 
+                FROM Kullanicilar 
+                WHERE rol_id = 2 AND aktif_mi = 1 AND uzmanlik_alani IS NOT NULL AND uzmanlik_alani != ''
+                ORDER BY uzmanlik_alani";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        
+        // Sadece tek boyutlu bir alan listesi döndürmek için kullanışlıdır
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
 }
 ?>

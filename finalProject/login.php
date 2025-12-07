@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['giris'])) {
             <p class="mesaj-hata"><?php echo $hata; ?></p>
         <?php endif; ?>
 
-        <form method="POST" action="index.php">
+        <form method="POST" action="login.php">
             <label for="e_posta">E-posta:</label>
             <input type="email" id="e_posta" name="e_posta" required>
 

@@ -53,7 +53,14 @@ if ($hasta_kaydi) {
                     <p><?php echo nl2br(htmlspecialchars($kayit['reçete_bilgisi'])); ?></p>
                     <?php endif; ?>
                 </div>
-                <p class="kayit-tarihi">Kayıt Giriş Tarihi: <?php echo date("d.m.Y", strtotime($kayit['kayit_tarihi'])); ?></p>
+                <div class="kayit-karti">
+                <p class="kayit-tarihi" style="margin-top: 15px;">
+                    Kayıt Giriş Tarihi: <?php echo date("d.m.Y H:i", strtotime($kayit['kayit_tarihi'])); ?><br>
+                    <?php if (!empty($kayit['guncelleme_tarihi'])): ?>
+                        Kayıt Güncelleme Tarihi: <?php echo date("d.m.Y H:i", strtotime($kayit['guncelleme_tarihi'])); ?>
+                    <?php endif; ?>
+                </p>
+            </div>
             </div>
             <hr>
             <?php endforeach; ?>

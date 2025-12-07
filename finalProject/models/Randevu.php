@@ -141,5 +141,30 @@ class Randevu {
             return false;
         }
     }
+
+    /**
+     * Belirli bir doktorun belirli bir tarihteki dolu saatlerini çeker.
+     * @param int $doktor_id Doktorun Kullanici ID'si
+     * @param string $tarih Kontrol edilecek tarih (YYYY-MM-DD)
+     * @return array Dolu saatlerin listesi (Örn: ['10:00:00', '14:30:00'])
+     */
+    public function doluSaatleriGetir($doktor_id, $tarih) {
+        // Sadece 'Planlandı' ve 'Onaylandı' durumundaki randevuları dolu kabul ediyoruz.
+        // Tarih başlangıcı (00:00:00) ve bitişi (23:59:59) arasındaki randevuları çeker.
+        $sql = "SELECT 
+                    TIME(tarih_saat) AS saat 
+                FROM 
+                    Randevular
+                WHERE 
+                    doktor_id = ? AND 
+                    DATE(tarih_saat) = ? AND 
+                    durum IN ('Planlandı', 'Onaylandı')"; 
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$doktor_id, $tarih]);
+        
+        // Sadece saat değerlerini içeren tek boyutlu bir dizi döndür
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 }
 ?>

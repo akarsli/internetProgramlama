@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1>Hasta Ekle</h1>
-        <p><a href="index.php">← Giriş Sayfasına Geri Dön</a></p>
+        <p><a href="login.php">← Giriş Sayfasına Geri Dön</a></p>
 
         <?php if ($mesaj): ?>
             <p style="color: green; font-weight: bold;"><?php echo $mesaj; ?></p>

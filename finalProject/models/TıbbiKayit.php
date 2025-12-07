@@ -59,5 +59,53 @@ class TıbbiKayit {
         $stmt->execute([$hasta_id]);
         return $stmt->fetchAll();
     }
+
+    /**
+     * Belirli bir randevu için daha önce tıbbi kayıt girilip girilmediğini kontrol eder.
+     * @param int $randevu_id Kontrol edilecek randevu ID'si
+     * @return array|false Kayıt varsa kaydı, yoksa false döndürür.
+     */
+    public function randevuKaydiVarMi($randevu_id) {
+        $sql = "SELECT kayit_id FROM Tıbbi_Kayitlar WHERE randevu_id = ?";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$randevu_id]);
+        return $stmt->fetch();
+    }
+
+    /**
+     * Tıbbi kaydı ID ile çeker. (Formu doldurmak için)
+     */
+    public function idIleKayitGetir($kayit_id) {
+        $sql = "SELECT * FROM Tıbbi_Kayitlar WHERE kayit_id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$kayit_id]);
+        return $stmt->fetch();
+    }
+    
+    /**
+     * Mevcut bir tıbbi kaydı günceller (CRUD: Update).
+     * @param int $kayit_id Güncellenecek kaydın ID'si
+     * @param string $not
+     * @param string $teşhis
+     * @param string $reçete
+     * @return bool İşlem başarılıysa true
+     * Mevcut bir tıbbi kaydı günceller (CRUD: Update).
+     * guncelleme_tarihi alanını otomatik olarak ayarlar.
+     */
+    public function kayitGuncelle($kayit_id, $not, $teşhis, $reçete) {
+        $sql = "UPDATE Tıbbi_Kayitlar 
+                SET muayene_notu = ?, teşhis = ?, reçete_bilgisi = ?, guncelleme_tarihi = NOW() 
+                WHERE kayit_id = ?";
+        
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            return $stmt->execute([$not, $teşhis, $reçete, $kayit_id]);
+        } catch (\PDOException $e) {
+            // echo "Kayıt güncelleme hatası: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 }
 ?>

@@ -39,6 +39,7 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
                     <th>E-posta</th>
                     <th>Telefon</th>
                     <th>Rol</th>
+                    <th>Uzmanlık Alanı</th>
                     <th>Durum</th>
                     <th>İşlemler</th>
                 </tr>
@@ -49,10 +50,21 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
                     <td><?php echo htmlspecialchars($kullanici['kullanici_id']); ?></td>
                     <td><?php echo htmlspecialchars($kullanici['ad'] . ' ' . $kullanici['soyad']); ?></td>
                     <td><?php echo htmlspecialchars($kullanici['e_posta']); ?></td>
-                    <td><?php echo htmlspecialchars($kullanici['telefon'] ?? '-'); ?></td>
+                    <td><?php echo htmlspecialchars(string: $kullanici['telefon'] ?? '-'); ?></td>
                     <td class="rol-<?php echo strtolower($kullanici['rol_adi']); ?>">
                         <?php echo htmlspecialchars($kullanici['rol_adi']); ?>
                     </td>
+                    <td>
+                            <?php 
+                            if ($kullanici['rol_adi'] == 'Doktor' && !empty($kullanici['uzmanlik_alani'])) {
+                                echo htmlspecialchars($kullanici['uzmanlik_alani']);
+                            } elseif ($kullanici['rol_adi'] == 'Doktor') {
+                                echo 'Tanımsız';
+                            } else {
+                                echo '-';
+                            }
+                            ?>
+                        </td>
                     <td><?php echo $kullanici['aktif_mi'] ? 'Aktif' : 'Pasif'; ?></td>
                     <td>
                         <a href="kullanici_duzenle.php?id=<?php echo $kullanici['kullanici_id']; ?>">Düzenle (Update)</a> 

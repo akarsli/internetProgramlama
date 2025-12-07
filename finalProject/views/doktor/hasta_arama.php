@@ -103,7 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['arama'])) {
                     <h4 style="margin-top: 10px;">Reçete Bilgisi:</h4>
                     <p><?php echo nl2br(htmlspecialchars($kayit['reçete_bilgisi'])); ?></p>
                     <?php endif; ?>
+                    
+                    <a href="kayit_duzenle.php?randevu_id=<?php echo $kayit['randevu_id']; ?>" 
+                       style="display: inline-block; padding: 8px 15px; background-color: #16a085; color: white; border-radius: 4px; text-decoration: none; margin-top: 10px;">
+                        Tıbbi Kaydı Düzenle
+                    </a>
+                    
                 </div>
+
                 <?php endforeach; ?>
             <?php endif; ?>
 
