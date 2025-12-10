@@ -71,7 +71,7 @@ if ($is_logged_in) {
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 10px;
+            padding: 20px;
         }
 
         /* Başlık (Header) */
@@ -93,7 +93,7 @@ if ($is_logged_in) {
 
         .logo {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
+            font-size: 2em;
             font-weight: 700;
             color: var(--primary-color);
             text-decoration: none;
@@ -232,14 +232,10 @@ if ($is_logged_in) {
             align-items: center;
             gap: 40px;
             flex-wrap: wrap;
-            margin-top: 20px;
-            border-radius: 10px;
-            border: 1px solid #b3b3b3ff;
         }
 
         .about-content {
             flex: 1;
-            padding: 0 40px 0 40px ;
             min-width: 300px;
         }
         .about-content h3 {
@@ -389,10 +385,10 @@ if ($is_logged_in) {
         }
 
         /* Duyarlı Tasarım (Mobil Görünüm) */
-        @media (max-width: 1200px) {
+        @media (max-width: 768px) {
             .navbar {
                 justify-content: space-between;
-                padding: 20px 20px;
+                padding: 10px 20px;
             }
             
             .menu-toggle {
@@ -450,7 +446,7 @@ if ($is_logged_in) {
 
     <header>
         <div class="container navbar">
-            <a href="homepage.php" class="logo">YirmiBeş Klinik</a>
+            <a href="homepage.php" class="logo">Klinik Adı</a>
             
             <div class="menu-toggle" id="menuToggle">☰</div> 
             
@@ -474,7 +470,7 @@ if ($is_logged_in) {
                 <?php } else { ?>
                 <div class="auth-buttons">
                     <a href="login.php">Giriş Yap</a>
-                    <a href="hasta_kayit_ol.php">Kayıt Ol</a>
+                    <a href="register.php">Kayıt Ol</a>
                 </div>
                 <?php }?>
             
@@ -498,10 +494,13 @@ if ($is_logged_in) {
 
     <section id="about" class="about-us container">
         <div class="about-content">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">Hakkımızda</h2>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Hakkımızda</h2>
             <p>Kliniğimiz, yılların deneyimine sahip uzman doktor kadrosu ve son teknoloji ekipmanlarıyla, hastalarına kapsamlı ve kişiselleştirilmiş sağlık hizmeti sunmaktadır.</p>
             <p>Amacımız, her hastamızın kendini güvende ve özel hissettiği bir ortamda, en güncel tedavi yöntemleriyle iyileşmelerini sağlamaktır. Yenilikçi yaklaşımlarımız ve etik değerlere bağlılığımızla, sağlık sektöründe öncü bir rol üstleniyoruz.</p>
             <p>Hasta memnuniyetini her zaman en ön planda tutarak, sizlere sağlıklı bir yaşam sunmak için çalışıyoruz.</p>
+        </div>
+        <div class="about-image">
+            <img src="https://via.placeholder.com/600x400?text=Klinik+İçi+Görsel" alt="Klinik İç Mekan">
         </div>
     </section>
 
@@ -512,6 +511,8 @@ if ($is_logged_in) {
             <?php if (!empty($aktif_hizmetler)): ?>
                 <?php foreach ($aktif_hizmetler as $hizmet): ?>
                     <div class="service-item">
+                        <img src="https://via.placeholder.com/80x80?text=<?php echo urlencode(substr($hizmet, 0, 5)); ?>" alt="<?php echo htmlspecialchars($hizmet); ?>">
+                        
                         <h3><?php echo htmlspecialchars($hizmet); ?></h3>
                         <p><?php echo htmlspecialchars($hizmet); ?> alanında uzman doktorlarımız mevcuttur. Hemen randevu alabilirsiniz.</p>
                     </div>
@@ -553,13 +554,13 @@ if ($is_logged_in) {
     <section id="contact" class="contact container">
         <h2 class="section-title">Bize Ulaşın</h2>
         <p>Sağlıkla ilgili sorularınız veya randevu talepleriniz için bize ulaşmaktan çekinmeyin.</p>
-        <p>Telefon: +90 (123) 456 7890 | E-posta: info@yirmibesklinik.com</p>
+        <p>Telefon: +90 (123) 456 7890 | E-posta: info@klinikadi.com</p>
         <a href="mailto:info@klinikadi.com" class="btn">E-posta Gönder</a>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; <?php echo date("Y"); ?> YirmiBeş Klinik. Tüm Hakları Saklıdır.</p>
+            <p>&copy; <?php echo date("Y"); ?> Klinik Adı. Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
 

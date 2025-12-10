@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['arama'])) {
             }
 
         } else {
-            $hata = "Eşleşen aktif Hasta hesabı bulunamadı.";
+            $hata = "Eşleşen aktif hasta hesabı bulunamadı.";
         }
     }
 }

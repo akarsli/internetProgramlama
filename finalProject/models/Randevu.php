@@ -166,5 +166,41 @@ class Randevu {
         // Sadece saat değerlerini içeren tek boyutlu bir dizi döndür
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
+    
+    /**
+     * Belirli bir doktorun bugünkü (Planlandı/Onaylandı) randevu sayısını verir.
+     * @param int $doktor_id Doktorun Kullanici ID'si
+     * @return int Randevu sayısı
+     */
+    public function bugunkuRandevuSayisiniGetir($doktor_id) {
+        $bugun = date('Y-m-d');
+        $sql = "SELECT COUNT(randevu_id) 
+                FROM Randevular 
+                WHERE doktor_id = ? AND 
+                      DATE(tarih_saat) = ? AND 
+                      durum IN ('Planlandı', 'Onaylandı')";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$doktor_id, $bugun]);
+        return (int)$stmt->fetchColumn();
+    }
+
+    /**
+     * Doktorun 'Tamamlandı' olarak işaretlediği ancak henüz Tıbbi Kayıt girilmemiş randevu sayısını verir.
+     * @param int $doktor_id Doktorun Kullanici ID'si
+     * @return int Kayıt eksikliği olan randevu sayısı
+     */
+    public function eksikKayitSayisiniGetir($doktor_id) {
+        $sql = "SELECT COUNT(r.randevu_id)
+                FROM Randevular r
+                LEFT JOIN Tıbbi_Kayitlar tk ON r.randevu_id = tk.randevu_id
+                WHERE r.doktor_id = ? 
+                  AND r.durum = 'Tamamlandı' 
+                  AND tk.randevu_id IS NULL"; // Tıbbi kaydı olmayanları bul
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$doktor_id]);
+        return (int)$stmt->fetchColumn();
+    }
 }
 ?>

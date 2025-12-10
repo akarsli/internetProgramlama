@@ -258,6 +258,48 @@ class Kullanici {
         // Sadece tek boyutlu bir alan listesi döndürmek için kullanışlıdır
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
+    
+    /**
+     * Bir kullanıcıyı veritabanından kalıcı olarak siler (CRUD: Delete).
+     * Foreign Key kısıtlamaları nedeniyle ilişkili kayıtları silmeye çalışır.
+     * @param int $kullanici_id Silinecek kullanıcının ID'si
+     * @return bool İşlem başarılıysa true
+     */
+    public function kullaniciKalıcıSil($kullanici_id, $rol_adi) {
+        try {
+            // Önemli: Foreign Key kısıtlamalarını geçici olarak kapatmak gerekebilir.
+            // set foreign_key_checks = 0;
+
+            // 1. Tıbbi Kayıtları Sil (Doktor veya Hastanın kayıtları)
+            if ($rol_adi === 'Doktor') {
+                $sql = "DELETE FROM Tıbbi_Kayitlar WHERE doktor_id = ?";
+                $this->pdo->prepare($sql)->execute([$kullanici_id]);
+            }
+
+            // 2. Randevuları Sil (Doktor veya Hastanın randevuları)
+            // Not: Hastanın randevuları için hasta_id'yi bulmak gerekir. Basitleştirelim.
+            $sql_randevu = "DELETE FROM Randevular WHERE doktor_id = ? OR hasta_id IN (SELECT hasta_id FROM Hastalar WHERE kullanici_id = ?)";
+            $this->pdo->prepare($sql_randevu)->execute([$kullanici_id, $kullanici_id]);
+
+            // 3. Hastalar/Doktorlar Detaylarını Sil
+            if ($rol_adi === 'Hasta') {
+                $sql = "DELETE FROM Hastalar WHERE kullanici_id = ?";
+                $this->pdo->prepare($sql)->execute([$kullanici_id]);
+            } elseif ($rol_adi === 'Doktor') {
+                 // Doktor detay tablosu yoksa bu adımı atlarız.
+            }
+            // Not: Admin rolü için özel bir detay tablosu yok.
+            
+            // 4. Ana Kullanıcı Kaydını Sil
+            $sql_ana = "DELETE FROM Kullanicilar WHERE kullanici_id = ?";
+            $stmt = $this->pdo->prepare($sql_ana);
+            return $stmt->execute([$kullanici_id]);
+            
+        } catch (\PDOException $e) {
+            // echo "Kalıcı silme hatası: " . $e->getMessage();
+            return false;
+        }
+    }
 
 }
 ?>

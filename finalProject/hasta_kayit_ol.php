@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h1>Hasta Ekle</h1>
+        <h1>Hasta Kayıt Ekranı</h1>
         <p><a href="login.php">← Giriş Sayfasına Geri Dön</a></p>
 
         <?php if ($mesaj): ?>

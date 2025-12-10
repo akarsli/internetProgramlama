@@ -98,7 +98,7 @@ input:focus, select:focus, textarea:focus {
 button[type="submit"] {
     background-color: var(--primary-color); 
     color: white;
-    padding: 12px 25px;
+    padding: 10px 10px;
     border: none;
     border-radius: 6px;
     cursor: pointer;

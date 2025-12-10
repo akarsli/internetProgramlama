@@ -12,6 +12,7 @@ $admin = $_SESSION['kullanici'];
     <title>Admin Kontrol Paneli</title>
     <link rel="stylesheet" href="../../css/style.css"> 
     <link rel="stylesheet" href="../../css/dashboard_style.css">
+    
 </head>
 <body>
     <div class="container">

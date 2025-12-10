@@ -106,6 +106,5 @@ class TıbbiKayit {
             return false;
         }
     }
-    
 }
 ?>
