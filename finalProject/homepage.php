@@ -94,8 +94,6 @@ if($is_logged_in){
             <?php if (!empty($aktif_hizmetler)): ?>
                 <?php foreach ($aktif_hizmetler as $hizmet): ?>
                     <div class="service-item">
-                        <img src="https://via.placeholder.com/80x80?text=<?php echo urlencode(substr($hizmet, 0, 5)); ?>" alt="<?php echo htmlspecialchars($hizmet); ?>">
-                        
                         <h3><?php echo htmlspecialchars($hizmet); ?></h3>
                         <p><?php echo htmlspecialchars($hizmet); ?> alanında uzman doktorlarımız mevcuttur. Randevu alabilirsiniz.</p>
                     </div>
