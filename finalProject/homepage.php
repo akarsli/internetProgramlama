@@ -16,8 +16,9 @@ $aktif_hizmetler = $kullanici_model->aktifHizmetleriGetir(); // YENİ EKLEME
 
 // Kullanıcının giriş yapıp yapmadığını kontrol et
 $is_logged_in = isset($_SESSION['kullanici']);
+$kullanici_ad = $is_logged_in ? $_SESSION['kullanici']['ad'] : ''; // Kullanıcının adını session'dan çek
 
-$target_url = 'login.php';
+$randevu_target_url = 'login.php';
 $alert_message = '';
 $is_doctor = false;
 
@@ -25,14 +26,15 @@ if($is_logged_in){
     $rol_adi = $_SESSION['kullanici']['rol_adi'];
 
     if($rol_adi == 'Hasta'){
-        $target_url='views/hasta/randevu_al.php';
+        $randevu_target_url='views/hasta/randevu_al.php';
+        $dashboard_target_url = 'views/hasta/dashboard.php';
     } else if($rol_adi == 'Doktor'){
-
         $is_doctor = true;
-        $target_url = '#';
+        $randevu_target_url = '#';
+        $dashboard_target_url = 'views/doktor/dashboard.php';
         $alert_message = "alert('UYARI : Doktorlar bu panel üzerinden randevu alamazlar!');";
     } else {
-        $target_url = 'views/admin/dashboard.php';
+        $randevu_target_url = 'views/admin/dashboard.php';
     }
 }
 
@@ -58,10 +60,22 @@ if($is_logged_in){
                 <a href="#doctors">Doktorlarımız</a>
                 <a href="#contact">İletişim</a>
             </nav>
+            <?php
+            if($is_logged_in){ ?>
+                <p style="margin-right: 15px; color: var(--text-color);">
+                    Hoş Geldiniz <span style="font-weight: 600;"><?php echo htmlspecialchars($kullanici_ad); ?></span> (<?php echo htmlspecialchars($_SESSION['kullanici']['rol_adi']); ?>)
+                </p>
+                <div class="auth-buttons">
+                    <a href="<?php echo $dashboard_target_url ?>">İşlem Paneli</a>
+                    <a href="logout.php">Çıkış Yap</a>
+                </div>
+            <?php } else { ?>
             <div class="auth-buttons">
                 <a href="login.php">Giriş Yap</a>
                 <a href="hasta_kayit_ol.php">Hasta Kaydı Oluştur</a>
             </div>
+            <?php }?>
+            
         </div>
     </header>
 
@@ -69,7 +83,7 @@ if($is_logged_in){
         <div class="hero-content">
             <h1>Sağlığınız İçin Modern ve Güvenilir Çözümler</h1>
             <p>Uzman ekibimizle, size en kaliteli sağlık hizmetini sunmak için buradayız. Randevu alın ve sağlığınızı ertelemeyin.</p>
-            <a href="<?php echo $target_url; ?>" class="btn" <?php if ($is_doctor): ?>
+            <a href="<?php echo $randevu_target_url; ?>" class="btn" <?php if ($is_doctor): ?>
                onclick="<?php echo $alert_message; ?> return false;"
            <?php endif; ?>>Randevu Alın</a>
         </div>

@@ -1,12 +1,12 @@
 /* Genel Ayarlar ve Font */
 :root {
-    --primary-color: #1abc9c; /* Turkuaz/Deniz Yeşili - Klinik ve sağlık hissiyatı verir */
-    --primary-dark: #16a085;
+    --primary-color: #2c7efc; /* Turkuaz/Deniz Yeşili - Klinik ve sağlık hissiyatı verir */
+    --primary-dark: #2759a3;
     --secondary-color: #34495e; /* Koyu gri/mavi - Metinler için okunurluk sağlar */
     --background-color: #ecf0f1; /* Çok açık gri */
     --card-background: #ffffff;
     --border-color: #e0e0e0;
-    --success-color: #2ecc71;
+    --success-color: #2c7efc;
     --error-color: #e74c3c;
 }
 

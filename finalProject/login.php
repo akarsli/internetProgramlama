@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['giris'])) {
         $rol = strtolower($giris_sonuc['rol_adi']);
         
         // Örnek: admin rolündeki kullanıcıyı /views/admin/dashboard.php'ye yönlendir
-        header("Location: views/{$rol}/dashboard.php");
+        header("Location: homepage.php");
         exit;
     } else {
         $hata = 'E-posta veya şifre hatalı.';

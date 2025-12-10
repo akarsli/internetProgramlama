@@ -24,6 +24,7 @@ $hasta = $_SESSION['kullanici'];
         <li><a href="randevu_al.php">🗓️ Yeni Randevu Al</a></li>
         <li><a href="randevu_listele.php">📋 Mevcut Randevuları Görüntüle</a></li> 
         <li><a href="kayit_gecmisi.php">🩺 Tıbbi Kayıtlarımı Görüntüle</a></li>
+        <li><a href="bilgi_duzenle.php">✏️ Kişisel Bilgileri Düzenle</a></li>
         <li><a href="../../logout.php">➡️ Çıkış Yap</a></li>
     </ul>
 </body>
