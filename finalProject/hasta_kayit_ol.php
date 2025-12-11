@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // YALNIZCA HASTA İSE: 2. Hastalar tablosuna kayıt yap
             if ($rol_id == 3) {
                 if ($kullanici_model->hastaDetayEkle($yeni_kullanici_id)) {
-                    $mesaj = "Hasta {$ad} {$soyad} sisteme ve detay tablosuna başarıyla eklendi.";
+                    $mesaj = "Hasta {$ad} {$soyad} sisteme başarıyla eklendi.";
                 } else {
                     // Kullanici kaydı başarılı oldu, ancak Hastalar kaydı başarısız oldu.
                     $hata = "Kullanıcı kaydı başarılı, ancak hasta detay (Hastalar tablosu) eklenemedi. Yöneticiye başvurun.";
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1>Hasta Kayıt Ekranı</h1>
-        <p><a href="login.php">← Giriş Sayfasına Geri Dön</a></p>
+        <p><a href="homepage.php">← Ana Sayfaya Geri Dön</a></p>
 
         <?php if ($mesaj): ?>
             <p style="color: green; font-weight: bold;"><?php echo $mesaj; ?></p>

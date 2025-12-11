@@ -1,0 +1,398 @@
+:root {
+            --primary-color: #2c7efc; 
+            --secondary-color: #f7f9fc; 
+            --text-color: #333;
+            --light-text-color: #666;
+            --white-color: #fff;
+            --border-color: #eee;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* Başlık (Header) */
+        header {
+            background-color: var(--white-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Navigasyon Linklerini Saran Yapı */
+        .nav-links {
+            transition: all 0.3s ease-in-out;
+            display: flex; 
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Auth Butonları Stili */
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .auth-buttons a {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-buttons a:hover {
+            background-color: #226bdf;
+        }
+        
+        /* PHP ile gelen Hoş Geldiniz Mesajı */
+        .navbar p {
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        /* HAMBURGER İKONU VE MOBİL MENÜ STİLLERİ */
+        .menu-toggle {
+            display: none; 
+            cursor: pointer;
+            font-size: 30px;
+            line-height: 0;
+            color: var(--primary-color);
+        }
+
+        /* Mobil menü içeriğini saran yapı */
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        /* Kahraman Bölümü (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(44, 126, 252, 0.8), rgba(44, 126, 252, 0.8)), url('https://via.placeholder.com/1600x600?text=Modern+Klinik+Görseli') no-repeat center center/cover;
+            color: var(--white-color);
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero .btn {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: var(--text-color);
+            color: var(--white-color);
+        }
+
+        /* Bölüm Başlıkları */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Hakkımızda Bölümü */
+        .about-us {
+            padding: 80px 0;
+            background-color: var(--white-color);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 1px solid #b3b3b3ff;
+        }
+
+        .about-content {
+            flex: 1;
+            padding: 0 40px 0 40px ;
+            min-width: 300px;
+        }
+        .about-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .about-content p {
+            color: var(--light-text-color);
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Hizmetler Bölümü */
+        .services {
+            padding: 80px 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-item p {
+            color: var(--light-text-color);
+            font-size: 1em;
+        }
+
+        /* Doktorlarımız Bölümü */
+        .doctors {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .doctor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .doctor-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .doctor-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            color: var(--text-color);
+            margin: 20px 0 5px;
+        }
+
+        .doctor-card p {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* İletişim Bölümü */
+        .contact {
+            margin-bottom: 20px;
+            padding: 80px 0;
+            background-color: var(--white-color);
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #b3b3b3ff;
+        }
+        .contact p {
+            font-size: 1.2em;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+        .contact .btn {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+        .contact .btn:hover {
+            background-color: #226bdf;
+        }
+
+        /* Alt Bilgi (Footer) */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Duyarlı Tasarım (Mobil Görünüm) */
+        @media (max-width: 1200px) {
+            .navbar {
+                justify-content: space-between;
+                padding: 20px 20px;
+            }
+            
+            .menu-toggle {
+                display: block; /* Hamburger ikonunu göster */
+            }
+
+            /* Tüm menü içeriğini (linkler, mesaj, butonlar) saran yapıyı gizle */
+            .nav-wrapper {
+                display: none; 
+                flex-direction: column; 
+                width: 100%; 
+                text-align: center;
+                margin-top: 15px;
+                padding-top: 15px;
+                background-color: var(--white-color);
+                border-top: 1px solid var(--border-color);
+            }
+            
+            /* Mobil menü aktifken içeriği göster */
+            .nav-wrapper.active {
+                display: flex;
+            }
+
+            /* Nav Linkleri, Mesaj ve Butonları dikey yap */
+            .nav-links, .auth-buttons, .navbar p {
+                flex-direction: column; 
+                width: 100%;
+                margin: 0;
+            }
+
+            .nav-links a, .auth-buttons a {
+                margin: 8px 0;
+                padding: 12px;
+                border-bottom: 1px solid var(--secondary-color);
+            }
+            
+            /* Mesajı mobil menüde ortala ve sıraya koy */
+            .navbar p {
+                padding: 10px 0;
+                border-bottom: 1px solid var(--secondary-color);
+                order: -1; /* En üste taşır */
+            }
+            
+            /* Diğer mobil ayarlamalar */
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .about-us {
+                flex-direction: column;
+            }
+        }

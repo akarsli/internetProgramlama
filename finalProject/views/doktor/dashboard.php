@@ -27,7 +27,7 @@ if ($bugunku_randevu_sayisi > 0) {
 }
 
 if ($eksik_kayit_sayisi > 0) {
-    $dashboard_mesaji .= " Ayrıca, kayıt girişi eksik olan {$eksik_kayit_sayisi} adet 'TAMAMLANDI' randevunuz var. Lütfen tamamlayın! ⚠️";
+    $dashboard_mesaji .= " Ayrıca, kayıt girişi eksik olan {$eksik_kayit_sayisi} adet tamamlanmamış randevunuz var. Lütfen tamamlayın! ⚠️";
     $mesaj_sinifi = 'mesaj-hata'; // Eksik kayıt varsa uyarı mesajı ver
 } elseif ($bugunku_randevu_sayisi === 0) {
     $dashboard_mesaji = "Tebrikler, bugün için aktif randevunuz ve eksik kaydınız bulunmamaktadır. Rahat bir gün!";
@@ -39,13 +39,13 @@ if ($eksik_kayit_sayisi > 0) {
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Doktor Kontrol Paneli</title>
+    <title>Doktor İşlem Paneli</title>
     <link rel="stylesheet" href="../../css/style.css"> 
     <link rel="stylesheet" href="../../css/dashboard_style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Hoş Geldiniz, Dr. <?php echo htmlspecialchars($doktor_ad); ?></h1>
+        <h1>Doktor İşlem Paneline Hoş Geldiniz, Dr. <?php echo htmlspecialchars($doktor_ad); ?></h1>
         <div class="<?php echo $mesaj_sinifi; ?>" style="padding: 15px; border-radius: 5px; margin-bottom: 20px;">
             <?php echo $dashboard_mesaji; ?>
         </div>

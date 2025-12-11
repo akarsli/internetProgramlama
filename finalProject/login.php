@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['giris'])) {
 <body>
     <div class="container"> 
         <h1>Klinik Sistemine Girişi</h1>
+        <p><a href="homepage.php">← Ana Sayfaya Geri Dön</a></p>
         
         <?php if ($hata): ?>
             <p class="mesaj-hata"><?php echo $hata; ?></p>

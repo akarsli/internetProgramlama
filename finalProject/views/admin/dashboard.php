@@ -16,7 +16,7 @@ $admin = $_SESSION['kullanici'];
 </head>
 <body>
     <div class="container">
-        <h1>Admin Kontrol Paneli, Hoş geldiniz <?php echo htmlspecialchars($admin['ad'] . ' ' . $admin['soyad']); ?>!</h1>
+        <h1>Admin İşlem Paneline Hoş geldiniz, <?php echo htmlspecialchars($admin['ad'] . ' ' . $admin['soyad']); ?>!</h1>
         
         <h2>Yönetim Menüsü</h2>
         <ul>

@@ -15,17 +15,19 @@ $hasta = $_SESSION['kullanici'];
     <link rel="stylesheet" href="../../css/dashboard_style.css">
 </head>
 <body>
-    <h1>Hasta Kontrol Paneli, Hoş geldiniz <?php echo htmlspecialchars($hasta['ad']); ?>!</h1>
-    <p>Buradan randevularınızı yönetebilir ve tıbbi geçmişinizi görüntüleyebilirsiniz.</p>
+    <div class="container">
+        <h1>Hasta İşlem Paneline Hoş geldiniz, <?php echo htmlspecialchars($hasta['ad']); ?>!</h1>
+        <p>Buradan randevularınızı yönetebilir ve tıbbi geçmişinizi görüntüleyebilirsiniz.</p>
 
-    <h2>İşlemler</h2>
-    <ul>
-        <li><a href="/../../homepage.php">🏠 Ana Sayfaya Git</a></li>
-        <li><a href="randevu_al.php">🗓️ Yeni Randevu Al</a></li>
-        <li><a href="randevu_listele.php">📋 Mevcut Randevuları Görüntüle</a></li> 
-        <li><a href="kayit_gecmisi.php">🩺 Tıbbi Kayıtlarımı Görüntüle</a></li>
-        <li><a href="bilgi_duzenle.php">✏️ Kişisel Bilgileri Düzenle</a></li>
-        <li><a href="../../logout.php">➡️ Çıkış Yap</a></li>
-    </ul>
+        <h2>İşlemler</h2>
+        <ul>
+            <li><a href="/../../homepage.php">🏠 Ana Sayfaya Git</a></li>
+            <li><a href="randevu_al.php">🗓️ Yeni Randevu Al</a></li>
+            <li><a href="randevu_listele.php">📋 Mevcut Randevuları Görüntüle</a></li> 
+            <li><a href="kayit_gecmisi.php">🩺 Tıbbi Kayıtlarımı Görüntüle</a></li>
+            <li><a href="bilgi_duzenle.php">✏️ Kişisel Bilgileri Düzenle</a></li>
+            <li><a href="../../logout.php">➡️ Çıkış Yap</a></li>
+        </ul>
+    </div>
 </body>
 </html>
