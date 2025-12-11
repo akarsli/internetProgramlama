@@ -24,7 +24,6 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
         /* Admin Listeleme Sayfasına Özgü İyileştirmeler */
 
         /* Tablonun Genel Görünümü */
-
         .container-table table {
             width: 100%;
             border-collapse: separate; 
@@ -132,6 +131,10 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
         <?php if ($hata): ?>
             <p class="mesaj-hata"><?php echo htmlspecialchars($hata); ?></p>
         <?php endif; ?>
+        
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="aramaKutusu" placeholder="Ad, E-posta veya Rol ile ara..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
 
         <?php if (empty($kullanicilar)): ?>
             <p class="mesaj-basarili">Sistemde kayıtlı kullanıcı bulunmamaktadır.</p>
@@ -172,7 +175,7 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
                             <?php if ($kullanici['aktif_mi']): ?>
                                 <span class="status-active">Aktif</span>
                             <?php else: ?>
-                                <span class="status-inactive">İnaktif</span>
+                                <span class="status-inactive">Pasif</span>
                             <?php endif; ?>
                         </td>
                         
@@ -182,7 +185,7 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
                             <?php if ($kullanici['aktif_mi']): ?>
                                 | <a href="kullanici_pasiflestir.php?id=<?php echo $kullanici['kullanici_id']; ?>" 
                                    onclick="return confirm('Kullanıcı pasifleştirilecektir. Devam etmek istiyor musunuz?');">
-                                    İnaktif Yap
+                                    Pasifleştir
                                 </a>
                             <?php else: ?>
                                 | <a href="kullanici_aktiflestir.php?id=<?php echo $kullanici['kullanici_id']; ?>" 
@@ -193,7 +196,6 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
                             
                             <?php if ($kullanici['kullanici_id'] != $_SESSION['kullanici']['kullanici_id']): ?>
                             | <a href="kullanici_sil.php?id=<?php echo $kullanici['kullanici_id']; ?>" 
-                               style="color: red; font-weight: bold;"
                                onclick="return confirm('TEHLİKE: Bu kullanıcıyı ve tüm ilişkili kayıtlarını kalıcı olarak silmek üzeresiniz. Bu işlem geri ALINAMAZ. Emin misiniz?');">
                                 Sil
                             </a>
@@ -205,5 +207,68 @@ $kullanicilar = $kullanici_model->tumKullanicilariGetir();
             </table>
         <?php endif; ?>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const aramaKutusu = document.getElementById('aramaKutusu');
+            const tablo = document.querySelector('.container-table table');
+            const tbody = tablo ? tablo.querySelector('tbody') : null;
+
+            if (!aramaKutusu || !tbody) {
+                // Eğer hata alırsanız, tarayıcı konsolunda bu mesajı görebilirsiniz.
+                console.log("Filtreleme başlatılamadı: Arama kutusu veya tablo gövdesi bulunamadı.");
+                return; 
+            }
+
+            aramaKutusu.addEventListener('keyup', function() {
+                const filtre = aramaKutusu.value.toLowerCase().trim();
+
+                // Eğer arama kutusu boşsa, tüm satırları göster ve çık
+                if (filtre === "") {
+                    const satirlar = tbody.getElementsByTagName('tr');
+                    for (let i = 0; i < satirlar.length; i++) {
+                        satirlar[i].style.display = '';
+                    }
+                    return;
+                }
+                
+                const satirlar = tbody.getElementsByTagName('tr');
+
+                for (let i = 0; i < satirlar.length; i++) {
+                    const satir = satirlar[i];
+                    const sutunlar = satir.getElementsByTagName('td');
+                    let satirMetni = '';
+
+                    // Sütunları kontrol et (ID, İşlemler ve Durum hariç)
+                    // 1:Ad Soyad, 2:E-posta, 3:Rol, 4:Uzmanlık Alanı
+                    
+                    // Sütun sayısı en az 5 olmalı ki Uzmanlık Alanına erişelim (0, 1, 2, 3, 4)
+                    if (sutunlar.length >= 5) { 
+                        // Sütun indeksleri:
+                        // [1] = Ad Soyad
+                        // [2] = E-posta
+                        // [3] = Rol
+                        // [4] = Uzmanlık Alanı
+                        
+                        satirMetni += sutunlar[1].textContent.toLowerCase() + ' ';
+                        satirMetni += sutunlar[2].textContent.toLowerCase() + ' ';
+                        satirMetni += sutunlar[3].textContent.toLowerCase() + ' ';
+                        satirMetni += sutunlar[4].textContent.toLowerCase() + ' ';
+                    } else {
+                         // Eğer satırda yeterli sütun yoksa (ki olmamalı) sadece 1'den başla
+                         for (let j = 1; j < sutunlar.length; j++) {
+                            satirMetni += sutunlar[j].textContent.toLowerCase() + ' ';
+                         }
+                    }
+
+                    if (satirMetni.includes(filtre)) {
+                        satir.style.display = ''; // Satırı göster
+                    } else {
+                        satir.style.display = 'none'; // Satırı gizle
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
