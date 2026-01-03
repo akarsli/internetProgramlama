@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h1>Doktor Ekle</h1>
+        <h1>Admin Ekle</h1>
         <p><a href="dashboard.php">← Yönetici Paneline Geri Dön</a></p>
 
         <?php if ($mesaj): ?>

@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
 
             <div id="tarihSecimi">
-                <label>Tarih Seçimi (7 Gün İçinde):</label>
+                <label>Tarih Seçimi:</label>
                 <div class="time-slots" id="takvim_container">
                     </div>
                 <input type="hidden" id="tarih" name="tarih" value="<?php echo htmlspecialchars($varsayilan_tarih); ?>" required>
