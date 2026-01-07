@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="e_posta">E-posta (Kullanıcı Adı):</label>
             <input type="email" id="e_posta" name="e_posta" required><br><br>
 
-            <label for="sifre">Geçici Şifre:</label>
+            <label for="sifre">Şifre:</label>
             <input type="password" id="sifre" name="sifre" required minlength="6"><br><br>
 
             <button type="submit">Doktoru Kaydet</button>
